@@ -13,10 +13,10 @@ var snake2_score: u32 = 0;
 
 export fn start() void {
     w4.PALETTE.* = .{
-        0x051f39,
-        0x4a2480,
-        0xc53a9d,
-        0xff8e80,
+        0xe2f3e4,
+        0x46878f,
+        0x94e344,
+        0x332c50,
     };
     fruit = Fruit.new(Vec.new(10, 8));
 }
@@ -46,6 +46,8 @@ export fn update() void {
     fruit.draw();
     snake1.draw();
     snake2.draw();
+
+    w4.DRAW_COLORS.* = 0x0023;
 
     var score_buf: [11:0]u8 = undefined;
     if (std.fmt.bufPrint(&score_buf, "{}", .{snake1_score})) |buf| {

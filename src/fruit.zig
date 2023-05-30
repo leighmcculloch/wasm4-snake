@@ -14,7 +14,7 @@ pub fn reset(self: *Self, pos: Vec) void {
 }
 
 pub fn draw(self: Self) void {
-    w4.DRAW_COLORS.* = 0x0021;
+    w4.DRAW_COLORS.* = 0x0030;
     w4.blit(&bits, self.pos.x*8, self.pos.y*8, 8, 8, w4.BLIT_1BPP);
 }
 

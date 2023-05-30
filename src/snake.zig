@@ -57,10 +57,10 @@ pub fn update(self: *Self) void {
 }
 
 pub fn draw(self: Self) void {
-    w4.DRAW_COLORS.* = 0x0021;
+    w4.DRAW_COLORS.* = 0x0012;
     for (self.body.constSlice()) |part| {
         w4.rect(part.x * 8, part.y * 8, 8, 8);
     }
-    w4.DRAW_COLORS.* = 0x0023;
+    w4.DRAW_COLORS.* = 0x0013;
     w4.rect(self.body.get(0).x * 8, self.body.get(0).y * 8, 8, 8);
 }
