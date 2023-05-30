@@ -1,28 +1,16 @@
-const std = @import("std");
 const w4 = @import("wasm4.zig");
 const Vec = @import("vec.zig");
 
 const Self = @This();
 
-var random: std.rand.Random = undefined;
-
 pos: Vec,
-rnd: std.rand.Random,
 
 pub fn new(begin: Vec) Self {
-    var prng = std.rand.DefaultPrng.init(0);
-    var rnd = prng.random();
-    return .{
-        .pos = begin,
-        .rnd = rnd,
-    };
+    return .{ .pos = begin };
 }
 
-pub fn reset(self: *Self) void {
-    self.pos = Vec.new(
-        self.rnd.intRangeLessThan(i32, 0, 20),
-        self.rnd.intRangeLessThan(i32, 0, 20),
-    );
+pub fn reset(self: *Self, pos: Vec) void {
+    self.pos = pos;
 }
 
 pub fn draw(self: Self) void {

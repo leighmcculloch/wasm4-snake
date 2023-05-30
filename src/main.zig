@@ -18,7 +18,7 @@ export fn start() void {
         0xc53a9d,
         0xff8e80,
     };
-    fruit = Fruit.new(Vec.new(10, 10));
+    fruit = Fruit.new(Vec.new(10, 8));
 }
 
 var frame_count: u32 = 0;
@@ -29,13 +29,18 @@ export fn update() void {
     if (frame_count % 15 == 0) {
         snake1.update();
         snake2.update();
+
+        var eaten = false;
         if (snake1.pos().eq(fruit.pos)) {
             snake1_score += 1;
-            fruit.reset();
+            eaten = true;
         }
         if (snake2.pos().eq(fruit.pos)) {
             snake2_score += 1;
-            fruit.reset();
+            eaten = true;
+        }
+        if (eaten) {
+            fruit.reset(snake1.pos().xor(snake2.pos()).mod(20));
         }
     }
     fruit.draw();
