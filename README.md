@@ -1,6 +1,6 @@
-# hwz
+# wasm4-snake
 
-A game written in Zig for the [WASM-4](https://wasm4.org) fantasy console.
+A snake game written in Zig for the [WASM-4](https://wasm4.org) fantasy console.
 
 ## Building
 
